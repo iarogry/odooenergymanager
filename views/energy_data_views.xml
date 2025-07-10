@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Форма для джерела енергетичних даних -->
+    <record id="energy_data_source_view_form" model="ir.ui.view">
+        <field name="name">energy.data.source.form</field>
+        <field name="model">energy.data.source</field>
+        <field name="arch" type="xml">
+            <form string="Джерело енергетичних даних">
+                <header>
+                    <button name="action_import_data" string="Імпортувати дані з CSV" type="object" class="oe_highlight"
+                            help="Завантажте CSV-файл у форматі 'Hour,Value' (наприклад, '1,10.5')."/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" default_focus="1" placeholder="напр. Дані споживання за 2024 рік"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="data_type" widget="radio" options="{'horizontal': true}"/>
+                            <field name="file_name" invisible="1"/>
+                            <field name="file_data" filename="file_name" required="1"/>
+                        </group>
+                        <group>
+                            <field name="date_uploaded"/>
+                            <field name="notes"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Попередній перегляд погодинних даних">
+                             <!-- Поля One2many для попереднього перегляду даних -->
+                             <!-- Видимість полів залежить від вибраного типу даних -->
+                             <field name="energy_consumption_data_ids" context="{'default_data_source_id': active_id}" attrs="{'invisible': [('data_type', '!=', 'consumption')]}">
+                                <tree editable="bottom">
+                                    <field name="hour"/>
+                                    <field name="value" string="Споживання (кВт)"/>
+                                </tree>
+                            </field>
+                            <field name="energy_solar_data_ids" context="{'default_data_source_id': active_id}" attrs="{'invisible': [('data_type', '!=', 'solar_generation')]}">
+                                <tree editable="bottom">
+                                    <field name="hour"/>
+                                    <field name="value" string="Сонячна генерація (кВт)"/>
+                                </tree>
+                            </field>
+                            <field name="energy_gas_price_ids" context="{'default_data_source_id': active_id}" attrs="{'invisible': [('data_type', '!=', 'gas_price')]}">
+                                <tree editable="bottom">
+                                    <field name="hour"/>
+                                    <field name="value" string="Ціна газу ($/кВт·год)"/>
+                                </tree>
+                            </field>
+                            <field name="energy_grid_price_ids" context="{'default_data_source_id': active_id}" attrs="{'invisible': [('data_type', '!=', 'grid_price')]}">
+                                <tree editable="bottom">
+                                    <field name="hour"/>
+                                    <field name="value" string="Ціна мережі ($/кВт·год)"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Дерево для джерел енергетичних даних -->
+    <record id="energy_data_source_view_tree" model="ir.ui.view">
+        <field name="name">energy.data.source.tree</field>
+        <field name="model">energy.data.source</field>
+        <field name="arch" type="xml">
+            <tree string="Джерела енергетичних даних">
+                <field name="name"/>
+                <field name="data_type"/>
+                <field name="date_uploaded"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Форма для параметрів акумуляторної батареї -->
+    <record id="energy_battery_params_view_form" model="ir.ui.view">
+        <field name="name">energy.battery.params.form</field>
+        <field name="model">energy.battery.params</field>
+        <field name="arch" type="xml">
+            <form string="Параметри батареї">
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="name"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="capacity_kwh"/>
+                            <field name="max_charge_kw"/>
+                            <field name="max_discharge_kw"/>
+                        </group>
+                        <group>
+                            <field name="charge_efficiency"/>
+                            <field name="discharge_efficiency"/>
+                            <field name="initial_soc_kwh"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Дерево для параметрів акумуляторної батареї -->
+    <record id="energy_battery_params_view_tree" model="ir.ui.view">
+        <field name="name">energy.battery.params.tree</field>
+        <field name="model">energy.battery.params</field>
+        <field name="arch" type="xml">
+            <tree string="Параметри батареї">
+                <field name="name"/>
+                <field name="capacity_kwh"/>
+                <field name="max_charge_kw"/>
+                <field name="max_discharge_kw"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <!-- Дії для джерел енергетичних даних -->
+    <record id="action_energy_data_source" model="ir.actions.act_window">
+        <field name="name">Джерела енергетичних даних</field>
+        <field name="res_model">energy.data.source</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Дії для параметрів акумуляторної батареї -->
+    <record id="action_energy_battery_params" model="ir.actions.act_window">
+        <field name="name">Параметри батареї</field>
+        <field name="res_model">energy.battery.params</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Послідовність для джерел енергетичних даних -->
+        <record id="seq_energy_data_source" model="ir.sequence">
+            <field name="name">Послідовність джерел енергетичних даних</field>
+            <field name="code">energy.data.source</field>
+            <field name="prefix">ЕДД</field> <!-- Префікс для номерів записів -->
+            <field name="padding">4</field> <!-- Доповнення нулями до 4 цифр -->
+            <field name="company_id" eval="False"/> <!-- Доступно для всіх компаній -->
+        </record>
+        <!-- Послідовність для запусків оптимізації енергії -->
+        <record id="seq_energy_optimization_run" model="ir.sequence">
+            <field name="name">Послідовність запусків оптимізації енергії</field>
+            <field name="code">energy.optimization.run</field>
+            <field name="prefix">ЗОЕ</field> <!-- Префікс для номерів записів -->
+            <field name="padding">4</field> <!-- Доповнення нулями до 4 цифр -->
+            <field name="company_id" eval="False"/> <!-- Доступно для всіх компаній -->
+        </record>
+    </data>
+</odoo>

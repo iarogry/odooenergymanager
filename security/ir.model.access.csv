@@ -1,0 +1,24 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_energy_data_source_user,energy.data.source user,model_energy_data_source,base.group_user,1,1,1,0
+access_energy_data_source_manager,energy.data.source manager,model_energy_data_source,base.group_system,1,1,1,1
+
+access_energy_consumption_data_user,energy.consumption.data user,model_energy_consumption_data,base.group_user,1,1,1,0
+access_energy_consumption_data_manager,energy.consumption.data manager,model_energy_consumption_data,base.group_system,1,1,1,1
+
+access_energy_solar_data_user,energy.solar.data user,model_energy_solar_data,base.group_user,1,1,1,0
+access_energy_solar_data_manager,energy.solar.data manager,model_energy_solar_data,base.group_system,1,1,1,1
+
+access_energy_gas_price_user,energy.gas.price user,model_energy_gas_price,base.group_user,1,1,1,0
+access_energy_gas_price_manager,energy.gas.price manager,model_energy_gas_price,base.group_system,1,1,1,1
+
+access_energy_grid_price_user,energy.grid.price user,model_energy_grid_price,base.group_user,1,1,1,0
+access_energy_grid_price_manager,energy.grid.price manager,model_energy_grid_price,base.group_system,1,1,1,1
+
+access_energy_battery_params_user,energy.battery.params user,model_energy_battery_params,base.group_user,1,1,1,0
+access_energy_battery_params_manager,energy.battery.params manager,model_energy_battery_params,base.group_system,1,1,1,1
+
+access_energy_optimization_run_user,energy.optimization.run user,model_energy_optimization_run,base.group_user,1,1,1,0
+access_energy_optimization_run_manager,energy.optimization.run manager,model_energy_optimization_run,base.group_system,1,1,1,1
+
+access_energy_optimization_line_user,energy.optimization.line user,model_energy_optimization_line,base.group_user,1,0,0,0
+access_energy_optimization_line_manager,energy.optimization.line manager,model_energy_optimization_line,base.group_system,1,1,1,1

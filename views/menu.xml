@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Головне меню "Управління енергією" -->
+    <menuitem id="energy_optimization_root_menu" name="Управління енергією" sequence="10"/>
+
+    <!-- Підменю "Конфігурація" -->
+    <menuitem id="energy_optimization_config_menu" name="Конфігурація" parent="energy_optimization_root_menu" sequence="10"/>
+    <menuitem id="energy_optimization_data_menu" name="Джерела даних" parent="energy_optimization_config_menu" action="action_energy_data_source" sequence="10"/>
+    <menuitem id="energy_optimization_battery_menu" name="Параметри батареї" parent="energy_optimization_config_menu" action="action_energy_battery_params" sequence="20"/>
+
+    <!-- Підменю "Запуски оптимізації" -->
+    <menuitem id="energy_optimization_runs_menu" name="Запуски оптимізації" parent="energy_optimization_root_menu" action="action_energy_optimization_run" sequence="20"/>
+</odoo>
